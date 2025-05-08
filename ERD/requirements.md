@@ -9,7 +9,7 @@ Design an Entity-Relationship (ER) diagram for the `alx-airbnb-database` project
 ## ER Diagram
 
 ### 🖼️ ER Diagram Image
-![ER Diagram](./erd.jpeg)
+![ER Diagram](./erd.jpg)
 
 ### 🔗 View/Edit Online
 You can also view or edit the ER diagram directly on Draw.io using the link below:
