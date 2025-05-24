@@ -22,5 +22,16 @@ SELECT
     property_id,
     property_name,
     total_bookings,
-    RANK() OVER (ORDER BY total_bookings DESC) AS booking_rank
+    RANK() OVER (ORDER BY total_bookings DESC) AS booking_rank,
+    ROW_NUMBER() OVER (ORDER BY total_bookings DESC) AS booking_row_number,
+    DENSE_RANK() OVER (ORDER BY total_bookings DESC) AS booking_dense_rank
 FROM booking_counts;
+
+-- 3. Additional Window Function Example: Number bookings per month
+SELECT 
+    property_id,
+    DATE_TRUNC('month', start_date) AS month,
+    COUNT(*) AS bookings_count,
+    ROW_NUMBER() OVER (PARTITION BY property_id ORDER BY COUNT(*) DESC) AS monthly_rank
+FROM bookings
+GROUP BY property_id, DATE_TRUNC('month', start_date);
